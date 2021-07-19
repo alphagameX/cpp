@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 19:20:23 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/16 19:17:10 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/20 00:07:02 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ class PhoneBook
 	public:
 		PhoneBook(void);
 		CANONIC(PhoneBook);
-		bool	isRunning(void);
+		bool	isRunning(void) const;
 		void	start(void);
 		void	exit(void);
 		void	add(void);
-		void	search(void);
-		void	drawColumn(std::string content);
+		void	search(void) const;
+		void	getContact(void) const;
+		void	printColumn(std::string content) const;
+		void	printMenu(void) const;
 
 	private:
 		bool	_running;

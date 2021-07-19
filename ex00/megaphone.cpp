@@ -6,14 +6,14 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:40:21 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/15 19:13:54 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/19 22:13:57 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ctype.h>
 #include <iostream>
 
-void	strtoupper(std::string &str)
+void	strtoupper(std::string & str)
 {
 	int i;
 

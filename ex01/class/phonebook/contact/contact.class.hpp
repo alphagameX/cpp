@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 10:31:25 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/16 19:06:23 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/20 00:03:31 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,14 @@ class Contact
 	public:
 		Contact(void);
 		CANONIC(Contact);
-		std::string getField(field selector);
+		std::string getField(field selector) const;
 		void		setField(int id);
-		int			getId(void);
+		int			getId(void) const;
+		void		print(void) const;
+		void		waitingForInput(std::string msg, std::string & str) const;
 
 	private:
 		int			_id;
-		std::string _first_name;
-		std::string	_last_name;
-		std::string _nick_name;
-		std::string _phone_number;
-		std::string _darkest_secret;
+		std::string _first_name, _last_name, _nick_name,
+			_phone_number, _darkest_secret;
 };
