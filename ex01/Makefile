@@ -6,7 +6,7 @@
 #    By: arthur <arthur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/16 10:55:01 by arthur            #+#    #+#              #
-#    Updated: 2021/07/20 00:23:32 by arthur           ###   ########.fr        #
+#    Updated: 2021/07/20 00:45:17 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,13 +19,13 @@ CLASS=$(_PHONEBOOK)
 
 FILE=$(wildcard class/*.cpp) \
 	 $(CLASS)
-OBJ=$(FILE:.cpp=.o)
 
 MAIN=main.cpp
 
 # FLAG AND CONFIG
 
 NAME=PhoneBook
+LIB=libpb
 CC=clang++
 FLAGS=-Wall -Werror -Wextra -std=c++98 
 
@@ -33,12 +33,22 @@ FLAGS=-Wall -Werror -Wextra -std=c++98
 
 ################################################################################
 
-all:
-	$(CC) $(MAIN) $(FILE) $(FLAGS)
+lib:
+	$(CC) $(FLAGS) $(FILE) -c 
+	ar rcs $(LIB).a *.o
+
+all: lib
+	$(CC) $(MAIN) $(FLAGS) -L. -lpb -o $(NAME)
 # echo $(FILE)
-# ar 
+
 
 clean:
-	echo $(OBJ)
+	rm -rf *.o
 
-re: clean all
+fclean: clean
+	rm -rf $(LIB).a
+	rm -rf $(NAME)
+
+re: fclean all
+
+.DEFAULT_GOAL := all

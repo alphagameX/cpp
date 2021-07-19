@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 10:33:50 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/20 00:35:10 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/20 00:46:02 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	Contact::waitingForInput(std::string msg, std::string & str) const
 		std::cout << msg;
 		std::getline(std::cin, str);
 		if (str.empty())
-			std::cout << "Cannot be empty" << std::endl;
+			std::cout << "Cannot be empty !" << std::endl;
 	}
 }
 

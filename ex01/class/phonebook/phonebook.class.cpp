@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 10:33:42 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/20 00:16:03 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/20 00:49:18 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	PhoneBook::add(void)
 		std::cout << std::endl << "Contact added !" << std::endl << std::endl;
 	}
 	else
-		std::cout << "There is not space available for a new contact !" << std::endl << std::endl;
+		std::cout << std::endl << "There is not space available for a new contact !" << std::endl << std::endl;
 }
 
 void	PhoneBook::printColumn(std::string content) const
@@ -72,8 +72,13 @@ void	PhoneBook::getContact(void) const
 	std::string	buf;
 	int			i;
 
-	std::cout << std::endl << "Type contact's id which you want to see > " ;
+	std::cout << std::endl << "Type contact's id which you want to see (! for leave) > " ;
 	std::getline(std::cin, buf);
+	if (buf == "!")
+	{
+		std::cout << std::endl;
+		return ;
+	}
 	if (buf.size() == 1 && buf[0] >= '0' && buf[0] <= '9')
 	{
 		i = buf[0] - '0';

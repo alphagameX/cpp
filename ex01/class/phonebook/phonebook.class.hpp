@@ -6,12 +6,14 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 19:20:23 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/20 00:07:02 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/20 00:52:19 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../global.hpp"
-#include "contact/contact.class.hpp"
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+# include "../global.hpp"
+# include "contact/contact.class.hpp"
 
 class PhoneBook
 {
@@ -32,3 +34,5 @@ class PhoneBook
 		int		_count;
 		Contact	_lists[8];
 };
+
+#endif

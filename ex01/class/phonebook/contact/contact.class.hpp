@@ -6,11 +6,13 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 10:31:25 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/20 00:03:31 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/20 00:52:43 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../global.hpp"
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+# include "../../global.hpp"
 
 enum field
 {
@@ -38,3 +40,5 @@ class Contact
 		std::string _first_name, _last_name, _nick_name,
 			_phone_number, _darkest_secret;
 };
+
+#endif
