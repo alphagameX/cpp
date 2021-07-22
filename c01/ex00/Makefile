@@ -5,35 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: arthur <arthur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/22 13:14:53 by arthur            #+#    #+#              #
-#    Updated: 2021/07/22 13:58:20 by arthur           ###   ########.fr        #
+#    Created: 2021/07/22 13:57:15 by arthur            #+#    #+#              #
+#    Updated: 2021/07/22 14:03:41 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # PROPERTY
 
-FILE=$(wildcard *.cpp)
-NAME=account
-FLAGS=-Wall -Werror -Wextra -std=c++98 
+FILE= newZombie.cpp \
+	  randomChump.cpp \
+	  Zombie.cpp
+OBJ=$(FILE:.cpp=.o)
+FLAGS=-Wall -Werror -Wextra -std=c++98
+MAIN=main.cpp
 CC=clang++
+NAME=zombie
 
-# RULES
+#RULES
 
-###############################################################################
+################################################################################
 
-all:
-	$(CC) $(FLAGS) $(FILE) -o $(NAME)
+lib:
+	$(CC) $(FLAGS) $(FILE) -c
+	ar rcs lib$(NAME).a $(OBJ) 
 
-debug:
-	@$(CC) $(FLAGS) -D DEBUG=1 $(FILE) -o $(NAME)
-	@./$(NAME) > output
-	@diff output 19920104_091532.log
-	@if [ "$$?" = "0" ]; then \
-		echo "Not diff between log and output"; \
-	fi; 
+all: lib
+	$(CC) $(FLAGS) $(MAIN) -L. -lzombie -o $(NAME)
 
 clean:
-	rm -rf output
+	rm -rf $(OBJ)
 
-fclean: clean
-	rm -rf $(NAME)
+.DEFAULT_GOAL := all
