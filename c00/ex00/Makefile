@@ -5,50 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: arthur <arthur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/16 10:55:01 by arthur            #+#    #+#              #
-#    Updated: 2021/07/20 00:45:17 by arthur           ###   ########.fr        #
+#    Created: 2021/07/20 00:55:38 by arthur            #+#    #+#              #
+#    Updated: 2021/07/22 12:31:55 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# FILE
+# PROPERTY
 
-_PHONEBOOK=$(addprefix class/, \
-	phonebook/*.cpp \
-	phonebook/contact/*.cpp)
-CLASS=$(_PHONEBOOK)
-
-FILE=$(wildcard class/*.cpp) \
-	 $(CLASS)
-
-MAIN=main.cpp
-
-# FLAG AND CONFIG
-
-NAME=PhoneBook
-LIB=libpb
+FILE=$(wildcard *.cpp)
 CC=clang++
-FLAGS=-Wall -Werror -Wextra -std=c++98 
+FLAGS=-Wall -Wextra -Werror 
+NAME=megaphone
 
 # RULES
 
 ################################################################################
 
-lib:
-	$(CC) $(FLAGS) $(FILE) -c 
-	ar rcs $(LIB).a *.o
-
-all: lib
-	$(CC) $(MAIN) $(FLAGS) -L. -lpb -o $(NAME)
-# echo $(FILE)
-
+all:
+	$(CC) $(FLAGS) $(FILE) -o $(NAME)
 
 clean:
-	rm -rf *.o
-
-fclean: clean
-	rm -rf $(LIB).a
 	rm -rf $(NAME)
 
-re: fclean all
+fclean: clean
 
-.DEFAULT_GOAL := all
+re: clean all

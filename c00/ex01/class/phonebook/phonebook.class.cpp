@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 10:33:42 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/20 00:49:18 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/22 12:32:54 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ void	PhoneBook::printColumn(std::string content) const
 	while(content[spacing] && spacing < 10)
 	{
 		if (spacing == 9)
-			content[spacing] = '.';
+		{
+			if(content.size() > 10)
+				content[spacing] = '.';
+		}
 		std::cout << content[spacing];
 		spacing++;
 	}

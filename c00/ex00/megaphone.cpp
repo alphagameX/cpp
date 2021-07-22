@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:40:21 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/19 22:13:57 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/22 12:29:20 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,24 @@ void	strtoupper(std::string & str)
 	}
 }
 
-int	main(int argc, char *argv[])
+int	main(int argc, const char *argv[])
 {
 	std::string	str;
+	int			i;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
-		std::cout << "No args passed" << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return (1);
 	}
-	str = argv[1];
-	strtoupper(str);
-	std::cout << str << std::endl;
+	i = 1;
+	while(i < argc)
+	{
+		str = argv[i];
+		strtoupper(str);
+		std::cout << str;
+		i++;
+	}
+	std::cout << std::endl;
 	return (0); 
 }
