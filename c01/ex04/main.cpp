@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 11:49:10 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/23 19:18:24 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/23 19:28:22 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ namespace tool
 	void		write_file(std::string buf, char *filename)
 	{
 		std::ofstream	ofs;
+		std::string		output;
 
-		ofs.open(filename);
+		output = filename;
+		output += ".replace";
+		ofs.open(output.c_str());
 		if (ofs.fail())
 		{
 			std::cerr << "Somethings wrong with ofstream !" << std::endl; 

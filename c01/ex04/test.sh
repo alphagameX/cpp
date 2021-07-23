@@ -149,7 +149,7 @@ timeout_check
 ) &
 wait $!
 sed -i -e "s/salut/bye/g" file_2
-diff file_1 file_2 >> test.log
+diff file_1.replace file_2 >> test.log
 check 0
 
 ###################################################################
@@ -175,7 +175,7 @@ timeout_check
 ) & 
 wait $!
 sed -i -e "s/std::/putain_mec_c_cool::/g" file_2
-diff file_1 file_2 >> test.log
+diff file_1.replace file_2 >> test.log
 check 0
 
 ###################################################################
@@ -190,29 +190,42 @@ timeout_check
 ) & 
 wait $!
 sed -i -e "s/sed/replace/g" file_2
-diff file_1 file_2 >> test.log
+diff file_1.replace file_2 >> test.log
 check 0
 
 ###################################################################
 
-printf "TEST 7 | weird test | "
+printf "TEST 7 | re run same test | "
+echo "TEST 7 | ./replace file_1 \"sed\" \"replace\"; sed -i \"s/sed/replace/g\" file_2" >> test.log
+timeout_check
+(
+	./replace file_1 "sed" "replace" >> test.log 2>> test.log
+) & 
+wait $!
+sed -i -e "s/sed/replace/g" file_2
+diff file_1.replace file_2 >> test.log
+check 0
+
+###################################################################
+
+printf "TEST 8 | weird test | "
 echo "\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"" > file_1
 echo "\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"" > file_2
 
-echo "TEST 7 | ./replace file_1 \"\"\" \"bon mec arrete la\"; sed -i \"s/\"/bon mec arrete la/g\" file_2" >> test.log
+echo "TEST 8 | ./replace file_1 \"\"\" \"bon mec arrete la\"; sed -i \"s/\"/bon mec arrete la/g\" file_2" >> test.log
 timeout_check
 (
 	./replace file_1 "\"" "bon mec arrete la" >> test.log 2>> test.log
 ) & 
 wait $!
 sed -i "s/\"/bon mec arrete la/g" file_2
-diff file_1 file_2 >> test.log
+diff file_1.replace file_2 >> test.log
 check 0
 
 ###################################################################
 
-printf "TEST 8 | use a directory | "
-echo "TEST 8 | ./replace desole salut salut" >> test.log
+printf "TEST 9 | use a directory | "
+echo "TEST 9 | ./replace desole salut salut" >> test.log
 mkdir desole
 timeout_check
 (
@@ -220,6 +233,8 @@ timeout_check
 )
 wait $!
 check 1
+rm -rf desole
+rm -rf file_1.replace
 
 if [[ "$1" != "--debug" ]]; then
 	rm -rf file_1
