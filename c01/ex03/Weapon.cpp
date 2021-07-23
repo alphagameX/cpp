@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 13:37:10 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/22 14:32:24 by arthur           ###   ########.fr       */
+/*   Created: 2021/07/22 19:23:34 by arthur            #+#    #+#             */
+/*   Updated: 2021/07/22 20:11:27 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-# include <iostream>
-# define CANONIC(name) 				\
-	name(const name&);				\
-	virtual ~name();				\
-	name &operator=(const name&);
+#include "Weapon.hpp"
 
-class Zombie
+Weapon::Weapon(std::string type)
 {
-	public:
-		Zombie(void);
-		CANONIC(Zombie);
-		void	setName(std::string);
-		void	annonce(void) const;
+	_type = type;
+	return ;
+}
 
-	private:
-		std::string _name;
-};	
+Weapon::~Weapon(void) {}
 
-Zombie *newZombie(std::string name);
-void randomChump( std::string name );
+std::string &	Weapon::getType(void)
+{
+	return (this->_type);
+}
 
-#endif
+void	Weapon::setType(std::string type)
+{
+	_type = type;
+	return ;
+}

@@ -8,8 +8,8 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "${workspaceFolder}/c00/ex00/megaphone",
-			"args": ["salut", "tout le monde"],
+			"program": "${workspaceFolder}/c01/ex04/replace",
+			"args": ["c01/ex04/file", "cool", "s"],
 			"cwd": "${workspaceFolder}"
 		}
 	]

@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 13:37:10 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/22 14:32:24 by arthur           ###   ########.fr       */
+/*   Created: 2021/07/22 19:24:02 by arthur            #+#    #+#             */
+/*   Updated: 2021/07/22 20:22:48 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-# include <iostream>
-# define CANONIC(name) 				\
-	name(const name&);				\
-	virtual ~name();				\
-	name &operator=(const name&);
+#ifndef HUMAN_A_HPP
+# include "Weapon.hpp"
+# define HUMAN_A_HPP
 
-class Zombie
+class HumanA
 {
 	public:
-		Zombie(void);
-		CANONIC(Zombie);
-		void	setName(std::string);
-		void	annonce(void) const;
-
+		HumanA(std::string name, Weapon & weapon);
+		CANONIC(HumanA);
+		void	attack(void);
 	private:
+		Weapon & _weapon;
 		std::string _name;
-};	
-
-Zombie *newZombie(std::string name);
-void randomChump( std::string name );
+};
 
 #endif

@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 13:37:10 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/22 14:32:24 by arthur           ###   ########.fr       */
+/*   Created: 2021/07/22 20:25:30 by arthur            #+#    #+#             */
+/*   Updated: 2021/07/22 20:31:21 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-# include <iostream>
-# define CANONIC(name) 				\
-	name(const name&);				\
-	virtual ~name();				\
-	name &operator=(const name&);
+#include "HumanB.hpp"
 
-class Zombie
+HumanB::HumanB(std::string name) : _name(name)
 {
-	public:
-		Zombie(void);
-		CANONIC(Zombie);
-		void	setName(std::string);
-		void	annonce(void) const;
+	return ;
+}
 
-	private:
-		std::string _name;
-};	
+HumanB::~HumanB(void) {}
 
-Zombie *newZombie(std::string name);
-void randomChump( std::string name );
+void	HumanB::setWeapon(Weapon & weapon)
+{
+	_weapon = &weapon;
+	return ;
+}
 
-#endif
+void	HumanB::attack(void)
+{
+	std::cout << _name << " attacks with his " << this->_weapon->getType() << std::endl;
+	return ;
+}

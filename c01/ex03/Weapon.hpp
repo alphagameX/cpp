@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 13:37:10 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/22 14:32:24 by arthur           ###   ########.fr       */
+/*   Created: 2021/07/22 19:17:53 by arthur            #+#    #+#             */
+/*   Updated: 2021/07/22 20:12:46 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 # include <iostream>
 # define CANONIC(name) 				\
-	name(const name&);				\
 	virtual ~name();				\
 	name &operator=(const name&);
 
-class Zombie
+class Weapon
 {
 	public:
-		Zombie(void);
-		CANONIC(Zombie);
-		void	setName(std::string);
-		void	annonce(void) const;
+		Weapon(std::string type);
+		CANONIC(Weapon);
+		std::string &	getType(void);
+		void			setType(std::string type);
 
 	private:
-		std::string _name;
-};	
-
-Zombie *newZombie(std::string name);
-void randomChump( std::string name );
+		std::string _type; 
+};
 
 #endif

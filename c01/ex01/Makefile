@@ -6,14 +6,14 @@
 #    By: arthur <arthur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/22 13:57:15 by arthur            #+#    #+#              #
-#    Updated: 2021/07/22 14:12:49 by arthur           ###   ########.fr        #
+#    Updated: 2021/07/22 18:49:00 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # PROPERTY
 
 FILE= newZombie.cpp \
-	  randomChump.cpp \
+	  ZombieHorde.cpp \
 	  Zombie.cpp
 OBJ=$(FILE:.cpp=.o)
 FLAGS=-Wall -Werror -Wextra -std=c++98
