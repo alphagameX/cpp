@@ -6,7 +6,7 @@
 #    By: arthur <arthur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 20:14:20 by arthur            #+#    #+#              #
-#    Updated: 2021/07/25 23:08:44 by arthur           ###   ########.fr        #
+#    Updated: 2021/07/28 12:42:44 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ clean:
 
 fclean: clean
 	rm -rf libkarenfilter.a
-	rm -rf karen
+	rm -rf karenFilter
 
 re: fclean all
 
