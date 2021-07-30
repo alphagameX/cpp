@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/23 21:10:16 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/30 20:19:00 by arthur           ###   ########.fr       */
+/*   Created: 2021/07/28 14:20:09 by arthur            #+#    #+#             */
+/*   Updated: 2021/07/28 14:44:17 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-# define CANONIC(name) 				\
-	virtual ~name();				\
-	name &operator=(const name&);
-# define DEBUG 359
-# define INFO 300
-# define WARNING 534
-# define ERROR 394
 
-class Karen
+class Fixed
 {
 private:
-	std::string _level;
-	void debug( void );
-	void info( void );
-	void warning( void );
-	void error( void );
+	static const int _bits = 8;
+	int _value;
+
 public:
-	Karen(void);
-	CANONIC(Karen);
-	void complain(std::string level);
-	void print_all_above(int level_count);
+	Fixed(void);
+	~Fixed(void);
+	Fixed(const Fixed & rhs);
+	Fixed & operator=(Fixed & rhs);
+
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
 };

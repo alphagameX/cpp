@@ -6,11 +6,26 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 21:10:20 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/25 23:03:40 by arthur           ###   ########.fr       */
+/*   Updated: 2021/07/30 20:25:25 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Karen.hpp"
+
+int strval(const char *str)
+{
+	int i = 0;
+	int val = 0;
+
+	while (str[i])
+		val += str[i++];
+	return (val);
+}
+
+/*
+** CLASS KAREN
+**
+*/
 
 Karen::Karen(void)
 {
@@ -20,37 +35,6 @@ Karen::Karen(void)
 Karen::~Karen(void) 
 {
 	return ;
-}
-
-void Karen::complain(std::string level)
-{
-	int i;
-	void (Karen::*f[4])(void);
-	std::string levels[4] = {
-		"DEBUG",
-		"INFO",
-		"WARNING",
-		"ERROR"
-	};
-	f[0] = &Karen::debug;
-	f[1] = &Karen::info;
-	f[2] = &Karen::warning;
-	f[3] = &Karen::error;
-	i = 0;
-	while (i < 4)
-	{
-		if (levels[i] == level)
-		{
-			while (i < 4)
-			{
-				(this->*f[i])();
-				i++;
-			}
-			return;
-		}
-		i++;
-	}
-	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }
 
 void Karen::debug(void)
@@ -79,4 +63,43 @@ void Karen::error(void)
 {
 	std::cout << "[ ERROR ]" << std::endl;
 	std::cout << "This is unacceptable, I want to speak to the manager now." << std::endl;
+}
+
+
+
+void Karen::print_all_above(int level_count)
+{
+	void (Karen::*f[4])(void) = {
+		&Karen::debug,
+		&Karen::info,
+		&Karen::warning,
+		&Karen::error
+	};
+
+	while (level_count < 4)
+	{
+		(this->*f[level_count])();
+		level_count++;
+	}	
+}
+
+void Karen::complain(std::string level)
+{
+	switch (strval(level.c_str()))
+	{
+		case DEBUG:
+			print_all_above(0);
+			break;
+		case INFO:
+			print_all_above(1);
+			break;
+		case WARNING:
+			print_all_above(2);
+			break;
+		case ERROR:
+			print_all_above(3);
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
 }
