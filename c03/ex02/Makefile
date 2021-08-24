@@ -1,10 +1,10 @@
 FILE=$(wildcard *.cpp)
 CC=clang++
 FLAGS=-Wall -Werror -Wextra
-NAME=scavtrap
+NAME=flagtrap
 
 all:
-	$(CC) $(FLAGS) $(FILE) -o $(NAME)
+	$(CC) $(FLAGS) $(FILE) -I FlagTrap.hpp -o $(NAME)
 
 clean:
 	rm -f $(NAME)
