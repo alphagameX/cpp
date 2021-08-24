@@ -6,7 +6,7 @@
 /*   By: atinseau <atinseau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 13:11:59 by atinseau          #+#    #+#             */
-/*   Updated: 2021/08/24 13:26:40 by atinseau         ###   ########.fr       */
+/*   Updated: 2021/08/24 13:52:43 by atinseau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 class FlagTrap: public ClapTrap
 {
 	public:
-		FlagTrap(void);
+		FlagTrap(std::string name);
 		virtual ~FlagTrap(void);
 		FlagTrap(const FlagTrap & rhs);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arthurtinseau <arthurtinseau@student.42    +#+  +:+       +#+        */
+/*   By: atinseau <atinseau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:58:31 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/24 12:15:38 by arthurtinse      ###   ########.fr       */
+/*   Updated: 2021/08/24 14:07:04 by atinseau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 ClapTrap::ClapTrap(std::string name)
 {
+	std::cout << "ClapTrap constructor" << std::endl;
 	_name = name;
 	_attack_damage = 0;
 	_energy_points = 10;
 	_hitpoints = 10;	
 }
 
-ClapTrap::~ClapTrap(void) {}
+ClapTrap::~ClapTrap(void)
+{
+	std::cout << "ClapTrap destructor" << std::endl;
+}
 
 ClapTrap::ClapTrap(const ClapTrap & rhs)
 {

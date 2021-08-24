@@ -6,7 +6,7 @@
 /*   By: atinseau <atinseau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:58:05 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/24 13:27:09 by atinseau         ###   ########.fr       */
+/*   Updated: 2021/08/24 13:54:45 by atinseau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string	_name;
 		int			_hitpoints;
 		int			_energy_points;
