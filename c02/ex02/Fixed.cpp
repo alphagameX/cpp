@@ -48,18 +48,34 @@ Fixed::~Fixed(void)
 
 /* ************************************************************************** */
 
-Fixed & Fixed::max(Fixed & lhs, Fixed & rhs)
+const Fixed & Fixed::max(const Fixed & lhs, const Fixed & rhs)
 {
-	if (lhs > rhs)
+	if (lhs.toFloat() > rhs.toFloat())
 		return (lhs);
 	else
 		return (rhs);
 }
 
 
-Fixed & Fixed::min(Fixed & lhs, Fixed & rhs)
+const Fixed & Fixed::min(const Fixed & lhs,const Fixed & rhs)
 {
-	if (lhs < rhs)
+	if (lhs.toFloat() < rhs.toFloat())
+		return (lhs);
+	else
+		return (rhs);
+}
+
+Fixed & Fixed::min(Fixed & lhs,Fixed & rhs)
+{
+	if (lhs.toFloat() < rhs.toFloat())
+		return (lhs);
+	else
+		return (rhs);
+}
+
+Fixed & Fixed::max(Fixed & lhs, Fixed & rhs)
+{
+	if (lhs.toFloat() > rhs.toFloat())
 		return (lhs);
 	else
 		return (rhs);
@@ -79,11 +95,26 @@ Fixed & Fixed::operator++(void)
 	return *this;
 }
 
-Fixed & Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
-	_value += (1 << _bits) * 1;
+	Fixed tmp(*this);
+	operator++();
+	return (tmp);
+}
+
+Fixed & Fixed::operator--(void)
+{
+	_value -= (1 << _bits) * 1;
 	return *this;
 }
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	operator--();
+	return (tmp);
+}
+
 
 Fixed	Fixed::operator*(const Fixed & rhs)
 {

@@ -24,12 +24,14 @@ public:
 	Fixed(void);
 	Fixed(const int value);
 	Fixed(const float value);
-	~Fixed(void);
 	Fixed(const Fixed & rhs);
+	virtual ~Fixed(); 
 
 	Fixed & operator=(const Fixed & rhs);
 	Fixed & operator++(void);
-	Fixed &	operator++(int);
+	Fixed	operator++(int);
+	Fixed &	operator--(void);
+	Fixed 	operator--(int);
 
 	Fixed	operator*(const Fixed & rhs);
 	Fixed	operator+(const Fixed & rhs);
@@ -48,6 +50,9 @@ public:
 	int		toInt(void) const;
 	float	toFloat(void) const;
 	int		getRawBits(void) const;
+
+	static	const Fixed & min(const Fixed & lhs, const Fixed & rhs);
+	static	const Fixed & max(const Fixed & lhs, const Fixed & rhs);
 
 	static	Fixed & min(Fixed & lhs, Fixed & rhs);
 	static	Fixed & max(Fixed & lhs, Fixed & rhs);
