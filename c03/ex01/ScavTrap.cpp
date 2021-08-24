@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthurtinseau <arthurtinseau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 08:57:22 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/24 11:52:19 by arthurtinse      ###   ########.fr       */
+/*   Created: 2021/08/24 12:06:07 by arthurtinse       #+#    #+#             */
+/*   Updated: 2021/08/24 12:28:00 by arthurtinse      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main(void) 
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
+	this->_hitpoints = 100;
+	this->_energy_points = 50;
+	this->_attack_damage = 20;
+	std::cout << "ScavTrap constructor" << std::endl;
+	
+}
+ScavTrap::~ScavTrap(void)
+{
+	std::cout << "ScavTrap destructor" << std::endl;
+}
 
-	ClapTrap *sachaKetchum = new ClapTrap("Sacha Ketchum");
-
-	sachaKetchum->attack("Regis chen");
-	sachaKetchum->takeDamage(100);
-	sachaKetchum->beRepaired(90);
-
-	return (0);
+void ScavTrap::guardGate(void)
+{
+	std::cout << "Entering in Gate kepper mode" << std::endl;
 }

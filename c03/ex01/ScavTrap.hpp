@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthurtinseau <arthurtinseau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/24 08:57:22 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/24 11:52:19 by arthurtinse      ###   ########.fr       */
+/*   Created: 2021/08/24 12:02:47 by arthurtinse       #+#    #+#             */
+/*   Updated: 2021/08/24 12:29:33 by arthurtinse      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-int main(void) 
+class ScavTrap : public ClapTrap 
 {
-
-	ClapTrap *sachaKetchum = new ClapTrap("Sacha Ketchum");
-
-	sachaKetchum->attack("Regis chen");
-	sachaKetchum->takeDamage(100);
-	sachaKetchum->beRepaired(90);
-
-	return (0);
-}
+	private:
+		
+	public:
+		ScavTrap(std::string name);
+		virtual ~ScavTrap(void);
+		void guardGate(void);
+};
