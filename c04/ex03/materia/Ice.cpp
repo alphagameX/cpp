@@ -3,12 +3,14 @@
 
 Ice::Ice(void): AMateria("Ice")
 {
-	std::cout << "Ice constructor" << std::endl;
+	if (DEBUG)
+		std::cout << "Ice constructor" << std::endl;
 }
 
 Ice::~Ice(void) 
 {
-	std::cout << "Ice destructor" << std::endl;
+	if (DEBUG)
+		std::cout << "Ice destructor" << std::endl;
 }
 
 Ice::Ice(const Ice & rhs) 
@@ -18,8 +20,16 @@ Ice::Ice(const Ice & rhs)
 
 Ice & Ice::operator=(const Ice & rhs) 
 {
-	if (this == &rhs);
+	if (this == &rhs)
 		return (*this);
 	type = rhs.type;
 	return (*this);
 }
+
+AMateria* Ice::clone(void) const
+{
+	AMateria *real = new Ice(*this);
+	return (real);
+}
+
+

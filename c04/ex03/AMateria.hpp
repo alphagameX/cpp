@@ -2,7 +2,13 @@
 #define __AMATERIA_H__
 
 #include <iostream>
-#include "ICharacter.hpp"
+#include "character/ICharacter.hpp"
+
+#ifndef DEBUG
+#define DEBUG 0
+#endif
+
+class ICharacter;
 
 class AMateria
 {
@@ -11,9 +17,11 @@ class AMateria
 
 	public:
 		AMateria(void);
+		virtual ~AMateria(void);
 		AMateria(std::string const & type);
-		std::string const & getType() const; //Returns the materia type
-		virtual AMateria* clone() const = 0;
+		AMateria & operator=(const AMateria & rhs);
+		std::string const & getType(void) const; //Returns the materia type
+		virtual AMateria* clone(void) const = 0;
 		virtual void use(ICharacter& target);
 };
 #endif // __AMATERIA_H__

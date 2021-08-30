@@ -3,12 +3,14 @@
 
 Cure::Cure(void): AMateria("Cure")
 {
-	std::cout << "Cure constructor" << std::endl;
+	if (DEBUG)
+		std::cout << "Cure constructor" << std::endl;
 }
 
 Cure::~Cure(void) 
 {
-	std::cout << "Cure destructor" << std::endl;
+	if (DEBUG)
+		std::cout << "Cure destructor" << std::endl;
 }
 
 Cure::Cure(const Cure & rhs) 
@@ -18,8 +20,14 @@ Cure::Cure(const Cure & rhs)
 
 Cure & Cure::operator=(const Cure & rhs) 
 {
-	if (this == &rhs);
+	if (this == &rhs)
 		return (*this);
 	type = rhs.type;
 	return (*this);
+}
+
+AMateria* Cure::clone(void) const
+{
+	AMateria *real = new Cure(*this);
+	return (real);
 }
