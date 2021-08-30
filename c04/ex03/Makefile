@@ -1,9 +1,7 @@
-FILE=	ClapTrap.cpp \
-		FragTrap.cpp \
-		main.cpp
+FILE=$(wildcard *.cpp)
 CC=clang++
-FLAGS=-Wall -Werror -Wextra -std=c++98
-NAME=FragTrap
+# FLAGS=-Wall -Werror -Wextra
+NAME=Animal
 
 all:
 	$(CC) $(FLAGS) $(FILE) -o $(NAME)

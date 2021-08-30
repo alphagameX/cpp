@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 21:10:20 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/30 20:25:25 by arthur           ###   ########.fr       */
+/*   Updated: 2021/08/24 17:03:35 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,16 @@ Karen::~Karen(void)
 
 void Karen::debug(void)
 {
-	std::cout << "\"DEBUG\" level: Messages in this level contain extensive contextual information" << std::endl;
+	std::cout << "[ DEBUG ]" << std::endl;
 	std::cout << "They are mostly used for problem diagnosis. Example: \"I love to get extra bacon" << std::endl;
 	std::cout << "for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I just love it!\"" << std::endl;
 }
 
 void Karen::info(void)
 {
-	std::cout << "\"INFO\" level: These messages contain some contextual information to help trace" << std::endl;
+	std::cout << " [ INFO ]" << std::endl;
 	std::cout << "execution in a production environment. Example: \"I cannot believe adding extra" << std::endl;
 	std::cout << "bacon cost more money. You don’t put enough! If you did I would not have to ask" << std::endl;
-	std::cout << "for it!\"" << std::endl;
 }
 
 void Karen::warning(void)
@@ -80,6 +79,7 @@ void Karen::print_all_above(int level_count)
 	{
 		(this->*f[level_count])();
 		level_count++;
+		std::cout << std::endl;
 	}	
 }
 

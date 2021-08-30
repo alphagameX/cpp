@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atinseau <atinseau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 13:11:59 by atinseau          #+#    #+#             */
-/*   Updated: 2021/08/24 13:52:43 by atinseau         ###   ########.fr       */
+/*   Updated: 2021/08/27 16:52:29 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 # define FLAG_TRAP_HPP
 # include "ClapTrap.hpp"
 
-class FlagTrap: public ClapTrap
+class FragTrap: public ClapTrap
 {
 	public:
-		FlagTrap(std::string name);
-		virtual ~FlagTrap(void);
-		FlagTrap(const FlagTrap & rhs);
+		FragTrap(std::string name);
+		virtual ~FragTrap(void);
+		FragTrap(const FragTrap & rhs);
+		FragTrap & operator=(const FragTrap rhs);
 
 		void highFivesGuys(void);
 };

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atinseau <atinseau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 13:50:15 by atinseau          #+#    #+#             */
-/*   Updated: 2021/08/24 14:52:17 by atinseau         ###   ########.fr       */
+/*   Updated: 2021/08/27 16:56:40 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ int strval(const char *str)
 /* ************************************************************************** */
 
 
-FlagTrap::FlagTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "FlagTrap constructor" << std::endl;
+	std::cout << "FragTrap constructor" << std::endl;
 	_hitpoints = 100;
 	_energy_points = 100 ;
 	_attack_damage = 30;
 }
 
-FlagTrap::~FlagTrap(void)
+FragTrap::~FragTrap(void)
 {
-	std::cout << "FlagTrap destructor" << std::endl;
+	std::cout << "FragTrap destructor" << std::endl;
 }
 
-FlagTrap::FlagTrap(const FlagTrap & rhs) : ClapTrap(rhs._name)
+FragTrap::FragTrap(const FragTrap & rhs) : ClapTrap(rhs._name)
 {
 	*this = rhs;
 	return ;
@@ -47,12 +47,20 @@ FlagTrap::FlagTrap(const FlagTrap & rhs) : ClapTrap(rhs._name)
 
 /* ************************************************************************** */
 
-void FlagTrap::highFivesGuys(void)
+FragTrap & FragTrap::operator=(const FragTrap rhs)
+{
+	FragTrap *tmp = new FragTrap(rhs);
+	return (*tmp);
+}
+
+/* ************************************************************************** */
+
+void FragTrap::highFivesGuys(void)
 {
 	std::string	result;
 
-	std::cout << "Make check FlagTrap ? [y/n] ";
+	std::cout << "Make FragTrap's check ? [y/n] ";
 	std::getline(std::cin, result);
 	if(strval("y") == strval(result.c_str()))
-		std::cout << "FlagTrap " << _name << " have check !" << std::endl;	
+		std::cout << "FragTrap " << _name << " have check !" << std::endl;	
 }

@@ -6,7 +6,7 @@
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 18:50:44 by arthur            #+#    #+#             */
-/*   Updated: 2021/07/22 18:59:16 by arthur           ###   ########.fr       */
+/*   Updated: 2021/08/24 16:56:09 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void)
 {
-	std::string str = "salut chacal";
+	std::string str = "HI THIS IS BRAIN";
 	std::string & ref = str;
 	std::string *ptr = &str;
 	

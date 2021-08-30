@@ -1,0 +1,40 @@
+TEST 0 | ./replace
+There isn't 3 args: 0
+---- SUCESS ---
+
+TEST 1 | ./replace bla bla bla bla
+There isn't 3 args: 4
+---- SUCESS ---
+
+TEST 2 | ./replace file salut salut
+Fail opening file !
+---- SUCESS ---
+
+TEST 3 | ./replace file_1 salut bye; sed -i "s/salut/bye/g" file_2
+Change apply !
+---- SUCESS ---
+
+TEST 4 | ./replace file_1 "" ""
+Some args's string is empty and it cannot be !
+---- SUCESS ---
+
+TEST 5 | ./replace file_1 "std::" "putain_mec_c_cool::"; sed -i "s/std::/putain_mec_c_cool::/g" file_2
+Change apply !
+---- SUCESS ---
+
+TEST 6 | ./replace file_1 "sed" "replace"; sed -i "s/sed/replace/g" file_2
+Change apply !
+---- SUCESS ---
+
+TEST 7 | ./replace file_1 "sed" "replace"; sed -i "s/sed/replace/g" file_2
+Change apply !
+---- SUCESS ---
+
+TEST 8 | ./replace file_1 """ "bon mec arrete la"; sed -i "s/"/bon mec arrete la/g" file_2
+Change apply !
+---- SUCESS ---
+
+TEST 9 | ./replace desole salut salut
+Cannot open a folder !
+---- SUCESS ---
+

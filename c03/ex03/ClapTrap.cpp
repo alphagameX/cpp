@@ -12,6 +12,8 @@
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void) {}
+
 ClapTrap::ClapTrap(std::string name)
 {
 	std::cout << "ClapTrap constructor" << std::endl;
@@ -35,10 +37,15 @@ ClapTrap::ClapTrap(const ClapTrap & rhs)
 
 /* ************************************************************************** */
 
-ClapTrap & ClapTrap::operator=(const ClapTrap rhs)
+ClapTrap & ClapTrap::operator=(const ClapTrap & rhs)
 {
-	ClapTrap *tmp = new ClapTrap(rhs);
-	return (*tmp);
+	if (this == &rhs)
+		return (*this);
+	_name = rhs._name;
+	_attack_damage = rhs._attack_damage;
+	_energy_points = rhs._energy_points;
+	_hitpoints = rhs._hitpoints;
+	return (*this);
 }
 
 /* ************************************************************************** */
@@ -46,7 +53,6 @@ ClapTrap & ClapTrap::operator=(const ClapTrap rhs)
 void	ClapTrap::attack(std::string const & target)
 {
 	std::cout << "ClapTrap " << _name << " attack " << target << ", causing " << _attack_damage << " points of dammage !" << std::endl;
-	
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atinseau <atinseau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:57:22 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/24 14:47:49 by atinseau         ###   ########.fr       */
+/*   Updated: 2021/08/27 17:02:00 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,20 @@
 int main(void) 
 {
 
-	FlagTrap *sachaKetchum = new FlagTrap("Sacha Ketchum");
+	FragTrap *sachaKetchum = new FragTrap("Sacha Ketchum");
+	FragTrap *regisChen = new FragTrap("Regis chen");
+
+	
 
 	sachaKetchum->attack("Regis chen");
 	sachaKetchum->takeDamage(100);
 	sachaKetchum->beRepaired(90);
 
 	sachaKetchum->highFivesGuys();
+	regisChen->takeDamage(100);
+
+	delete sachaKetchum;
+	delete regisChen;
 
 	return (0);
 }

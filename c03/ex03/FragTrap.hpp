@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 13:37:10 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/24 16:54:37 by arthur           ###   ########.fr       */
+/*   Created: 2021/08/24 13:11:59 by atinseau          #+#    #+#             */
+/*   Updated: 2021/08/27 16:52:29 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-# include <iostream>
+#ifndef FLAG_TRAP_HPP 
+# define FLAG_TRAP_HPP
+# include "ClapTrap.hpp"
 
-class Zombie
+class FragTrap: virtual public ClapTrap
 {
 	public:
-		Zombie(void);
-		virtual ~Zombie();
-		void	setName(std::string);
-		void	annonce(void) const;
+		FragTrap(void);
+		FragTrap(std::string name);
+		virtual ~FragTrap(void);
+		FragTrap(const FragTrap & rhs);
+		FragTrap & operator=(const FragTrap & rhs);
 
-	private:
-		std::string _name;
-};	
+		void highFivesGuys(void);
+};
 
-Zombie *newZombie(std::string name);
-void randomChump( std::string name );
 
-#endif
+#endif 

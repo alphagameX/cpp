@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 13:37:10 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/24 16:54:37 by arthur           ###   ########.fr       */
+/*   Created: 2021/08/27 17:04:53 by arthur            #+#    #+#             */
+/*   Updated: 2021/08/27 17:05:03 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-# include <iostream>
 
-class Zombie
+#ifndef DIAMOND_TRAP_HPP
+# define DIAMOND_TRAP_HPP
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
+
+class DiamondTrap : public FragTrap, public ScavTrap
 {
 	public:
-		Zombie(void);
-		virtual ~Zombie();
-		void	setName(std::string);
-		void	annonce(void) const;
+		DiamondTrap(std::string name);
+		void		whoAmi(void);
+		using 		ScavTrap::attack;
 
 	private:
 		std::string _name;
-};	
-
-Zombie *newZombie(std::string name);
-void randomChump( std::string name );
+};
 
 #endif

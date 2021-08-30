@@ -1,8 +1,10 @@
-FILE=	ClapTrap.cpp \
+FILE=	DiamondTrap.cpp \
 		FragTrap.cpp \
+		ClapTrap.cpp \
+		ScavTrap.cpp \
 		main.cpp
-CC=clang++
-FLAGS=-Wall -Werror -Wextra -std=c++98
+CC=g++
+FLAGS=-Wall -Werror -Wextra -std=c++98 -Wshadow -Wno-shadow
 NAME=FragTrap
 
 all:
