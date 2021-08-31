@@ -6,7 +6,7 @@ FILE=	AMateria.cpp \
 		main.cpp
 
 CC=clang++
-# FLAGS=-Wall -Werror -Wextra
+FLAGS=-Wall -Werror -Wextra -g
 NAME=a.out
 
 all:

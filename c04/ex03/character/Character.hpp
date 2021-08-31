@@ -6,6 +6,10 @@
 
 class Character: public ICharacter
 {
+	private:
+		AMateria	**garbage;
+		int			count;
+
 	public:
 		Character(std::string name);
 		Character(void);
@@ -18,6 +22,9 @@ class Character: public ICharacter
 		virtual void equip(AMateria* m);
 		virtual void unequip(int idx);
 		virtual void use(int idx, ICharacter& target);
+
+		void printInventory(void);
+		void printGarbage(void);
 		
 };
 

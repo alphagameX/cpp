@@ -2,15 +2,15 @@
 #include "Character.hpp"
 
 
-Character::Character(std::string name)
+Character::Character(std::string name): garbage(NULL), count(0)
 {
 	if (DEBUG)
 		std::cout << "Character constructor" << std::endl;
 	this->name = name;
-	current = 0;	
+	current = 0;
 }
 
-Character::Character(void)
+Character::Character(void): garbage(NULL), count(0)
 {
 	if (DEBUG)
 		std::cout << "Character constructor" << std::endl;
@@ -22,6 +22,8 @@ Character::~Character(void)
 		std::cout << "Character destructor" << std::endl;
 	for (int i = 0; i < current; i++)
 		delete inventory[i];
+	for (int i = 0; i < count; i++)
+		delete garbage[i];
 }
 
 Character::Character(const Character & rhs) 
@@ -47,7 +49,7 @@ std::string const & Character::getName(void) const
 
 void Character::equip(AMateria* m)
 {
-	if (current == INVENTORY_COUNT)
+	if (current == INVENTORY_COUNT && !m)
 	{
 		std::cout << name << "'s inventory is full !" << std::endl;
 		return;
@@ -58,14 +60,44 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx) 
 {
-	if (idx > current && idx < 0 && !inventory[idx])
+	AMateria *tmp;
+	AMateria **garbage_;
+
+	if (idx >= current || idx >= INVENTORY_COUNT || idx < 0)
 	{
 		std::cout << name << "'s invetory index is already empty or idx invalid" << std::endl;
 		return;
 	}
+	while(idx + 1 < current)
+	{
+		tmp = inventory[idx];
+		inventory[idx] = inventory[idx + 1];
+		inventory[idx + 1] = tmp;
+		idx++;
+	}
+	garbage_ = new AMateria*[count + 1];
+	for(int i = 0; i < count; i++)
+		garbage_[i] = garbage[i]; 
+	garbage_[count] = inventory[idx];
+	delete [] garbage;
+	garbage = garbage_;
+	count++;
 
 	inventory[idx] = NULL;
-	current--;
+	current = idx;
+}
+
+void Character::printInventory(void)
+{
+
+	for (int i = 0; i < current; i++)
+		std::cout << inventory[i]->getType() << std::endl;
+}
+
+void Character::printGarbage(void)
+{
+	for (int i = 0; i < count; i++)
+		std::cout << garbage[i]->getType() << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)

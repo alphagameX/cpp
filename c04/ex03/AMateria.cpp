@@ -13,7 +13,7 @@ AMateria::AMateria(std::string const & type)
 	if (DEBUG)
 		std::cout << "AMateria constructor" << std::endl;
 	std::string lower = type;
-	for(int i = 0; i < lower.length(); i++)
+	for(int i = 0; i < (int)lower.length(); i++)
 		lower[i] = tolower(lower[i]);
 	this->type = lower;
 }

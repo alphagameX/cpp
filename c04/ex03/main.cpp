@@ -19,27 +19,33 @@ int main()
 
 	ICharacter* me = new Character("me");
 
-	AMateria* tmp;
+	AMateria *tmp;
+
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-
 	delete tmp;
 
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	delete tmp;
+
+	tmp = src->createMateria("cure");
 	me->equip(tmp); 
+	me->equip(tmp); 
+
+	delete tmp;
+	
 
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
-	// UNKNOWN MATERIA INDEX
 	me->use(3, *bob);
 
-	me->unequip(0);
-	me->unequip(1);
-	me->unequip(2);
+	// UNKNOWN MATERIA INDEX
+	me->use(4, *bob);
 	
+	me->unequip(0);
 
 	// UNKNOWN MATERIA INDEX
 
