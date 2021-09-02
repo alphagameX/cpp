@@ -24,6 +24,7 @@ Character::~Character(void)
 		delete inventory[i];
 	for (int i = 0; i < count; i++)
 		delete garbage[i];
+	delete [] garbage;
 }
 
 Character::Character(const Character & rhs) 

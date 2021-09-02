@@ -1,19 +1,10 @@
-FILE=	AMateria.cpp \
-		materia/Ice.cpp \
-		materia/Cure.cpp \
-		materia/MateriaSource.cpp  \
-		character/Character.cpp \
-		main.cpp
-
+FILE=	$(wildcard *.cpp)
 CC=clang++
-FLAGS=-Wall -Werror -Wextra
-NAME=a.out
+FLAGS=-Wall -Werror -Wextra -std=c++98 -g
+NAME=Bureaucrat
 
 all:
 	$(CC) $(FLAGS) $(FILE) -o $(NAME)
-
-debug:
-	$(CC) $(FLAGS) $(FILE) -D DEBUG=1 -o $(NAME)
 
 clean:
 	rm -f $(NAME)
@@ -23,9 +14,8 @@ valgrind: fclean
 	docker run -it -v $(shell pwd)/:/project valgrind
 
 # ONLY IN VALGRIND CONTAINER
-run: all
+run: re 
 	@valgrind --leak-check=full ./$(NAME)
-
 
 fclean: clean
 
