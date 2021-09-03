@@ -1,4 +1,5 @@
 
+#include "forms/ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
 int main(void)
@@ -45,29 +46,27 @@ int main(void)
 	if (client)
 		std::cout << client << std::endl;
 
-
+	std::cout << std::endl << std::endl << std::endl;
 	
 	try
 	{
-		client = new Bureaucrat("client", 8);
+		client = new Bureaucrat("client", 145);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
+	std::cout << client << std::endl;
 
-	if (client)
-		std::cout << client << std::endl;
-
-
-	Form *forms = new Form("Buy apple", 1, 8);
+	Form *forms = new ShrubberyCreationForm("Buy apple");
 	std::cout << *forms << std::endl;
 	std::cout << forms->getName(*client) << std::endl;
 
 	forms->beSigned(*client);
 
 	delete client;
+
+	std::cout << std::endl << std::endl << std::endl;
 
 	try
 	{
@@ -77,6 +76,7 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << client << std::endl;
 
 	std::cout << forms->getName(*client) << std::endl;
 

@@ -30,14 +30,15 @@ Form& Form::operator=(Form const &src)
 {
 	if (this == &src)
 		return (*this);
-	Form *tmp = new Form (src);
-	return (*tmp);
+	return (*this);
 }
 
 void Form::authorized(int grade, const Bureaucrat & rhs) const
 {
 	if (rhs.getGrade() > grade)
 		throw Form::GradeTooHighException();
+	if (rhs.getGrade() < MIN)
+		throw Form::GradeTooLowException();
 }
 
 std::string Form::getName(const Bureaucrat & rhs) const
@@ -49,7 +50,6 @@ std::string Form::getName(const Bureaucrat & rhs) const
 	}
 	catch (std::exception &e)
 	{
-		std::cout << rhs.getName() << " cannot execute because grade is too high" << std::endl;
 		return ("unknown");
 	}
 }
@@ -79,13 +79,13 @@ void Form::beSigned(const Bureaucrat & rhs)
 	try
 	{
 		authorized(_sign_required_grade, rhs);
-		_signed = !_signed;
+		_signed = true;
 		rhs.signForm(*this);
+		execute(rhs);
 	}
 	catch (std::exception & e)
 	{
-		std::cout << rhs.getName() << " cannot sign because the grade is too high" << std::endl;
-		return ;
+		std::cout << rhs.getName() << " cannot sign because the grade is too high" << std::endl; 
 	}
 }
 

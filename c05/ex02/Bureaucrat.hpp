@@ -6,7 +6,7 @@
 #define MIN 1
 #define MAX 150
 
-#include "Form.hpp"
+#include "forms/Form.hpp"
 
 class Form;
 

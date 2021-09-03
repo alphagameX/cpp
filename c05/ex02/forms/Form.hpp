@@ -2,7 +2,7 @@
 #define __FORM_H__
 
 # include <iostream>
-# include "Bureaucrat.hpp"
+# include "../Bureaucrat.hpp"
 
 class Bureaucrat;
 
@@ -21,15 +21,16 @@ class Form
 
 		Form&		operator=(Form const &src);
 
-		void	authorized(int grade, const Bureaucrat & rhs) const;
+		void			authorized(int grade, const Bureaucrat & rhs) const;
 
-		std::string getName(const Bureaucrat & rhs) const;
-		std::string getName(void) const;
-		bool		getSigned(void) const;
-		int			getSignGrade(void) const;
-		int			getExecGrade(void) const;
+		std::string		getName(const Bureaucrat & rhs) const;
+		std::string		getName(void) const;
+		bool			getSigned(void) const;
+		int				getSignGrade(void) const;
+		int				getExecGrade(void) const;
 
-		void		beSigned(const Bureaucrat & rhs);
+		void			beSigned(const Bureaucrat & rhs);
+		virtual void	execute(const Bureaucrat & executor) = 0;
 
 	class GradeTooHighException: public std::exception
 	{
