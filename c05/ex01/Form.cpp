@@ -49,7 +49,7 @@ std::string Form::getName(const Bureaucrat & rhs) const
 	}
 	catch (std::exception &e)
 	{
-		std::cout << rhs.getName() << " cannot execute because grade is too high" << std::endl;
+		std::cerr << rhs.getName() << " cannot execute because grade is too high" << std::endl;
 		return ("unknown");
 	}
 }
@@ -84,7 +84,7 @@ void Form::beSigned(const Bureaucrat & rhs)
 	}
 	catch (std::exception & e)
 	{
-		std::cout << rhs.getName() << " cannot sign because the grade is too high" << std::endl;
+		std::cerr << rhs.getName() << " cannot sign because the grade is too high" << std::endl;
 		return ;
 	}
 }

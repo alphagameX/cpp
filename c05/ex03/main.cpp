@@ -3,6 +3,8 @@
 #include "forms/RobotomyRequestForm.hpp"
 #include "forms/PresidentialPardonForm.hpp"
 
+#include "Intern.hpp"
+
 
 Bureaucrat *create_bureaucrat(std::string name, int grade)
 {
@@ -65,8 +67,13 @@ int main(void)
 
 	/////////////////////////////////////////////////
 
+	Intern *randomGuys = new Intern();
+
+	randomGuys->makeForm("elon contracts", "Be friend with elon");
+	
+	
 	Form *shrubbery = new ShrubberyCreationForm("Buy apple"); // sign 145 exec 137
-	Form *robotomy = new RobotomyRequestForm("terminate sarah connor"); // sign 72 exec 45
+	Form *robotomy = randomGuys->makeForm("robotomy request", "terminate sarah connor"); // sign 72 exec 45
 	Form *presidential = new PresidentialPardonForm("So sorry guys"); // sign 25 exec 5
  
 	Bureaucrat *admin = create_bureaucrat("admin", 1);
@@ -111,8 +118,7 @@ int main(void)
 		std::cout << std::endl;
 	}
 
-	
-	
+
 	std::cout << "Try sign all contracts..." << std::endl;
 
 	for (int i = 0; i < 3; i++)
@@ -132,6 +138,7 @@ int main(void)
 	delete robotomy;
 	delete sarah;
 	delete presidential;
+	delete randomGuys;
 
 	return (0);
 }

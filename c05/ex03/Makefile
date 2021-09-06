@@ -11,6 +11,7 @@ SRCS=	Bureaucrat.cpp \
 		forms/ShrubberyCreationForm.cpp \
 		forms/RobotomyRequestForm.cpp \
 		forms/PresidentialPardonForm.cpp \
+		Intern.cpp \
 		main.cpp
 OBJS=$(SRCS:.cpp=.o)
 
@@ -28,3 +29,11 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+valgrind: fclean
+	docker build -t valgrind $(shell pwd)
+	docker run -it -v $(shell pwd)/:/project valgrind
+
+# ONLY IN VALGRIND CONTAINER
+run: re 
+	@valgrind --leak-check=full ./$(NAME)
