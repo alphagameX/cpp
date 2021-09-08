@@ -12,13 +12,14 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(void) : _name("default"), _attack_damage(0), _energy_points(10), _hitpoints(10)
 {
 	std::cout << "ClapTrap constructor" << std::endl;
-	_name = name;
-	_attack_damage = 0;
-	_energy_points = 10;
-	_hitpoints = 10;	
+}
+
+ClapTrap::ClapTrap(std::string name) : _name(name), _attack_damage(0), _energy_points(10), _hitpoints(10)
+{
+	std::cout << "ClapTrap constructor" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
@@ -60,4 +61,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	std::cout << "ClapTrap " << _name << " regenerate " << amount << " energy points !" << std::endl;
 	_energy_points += amount;
 }
+
+
 

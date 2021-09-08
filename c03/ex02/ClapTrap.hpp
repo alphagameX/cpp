@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arthur <arthur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arthurtinseau <arthurtinseau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:58:05 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/27 16:51:32 by arthur           ###   ########.fr       */
+/*   Updated: 2021/08/24 12:28:10 by arthurtinse      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAP_TRAP_HPP
-# define CLAP_TRAP_HPP
-# include <iostream>
+#include <iostream>
 
 class ClapTrap
 {
@@ -22,16 +20,14 @@ class ClapTrap
 		int			_energy_points;
 		int			_attack_damage;
 	public:
-
+		ClapTrap(void);
 		ClapTrap(std::string name);
 		virtual ~ClapTrap(void);
 		ClapTrap(const ClapTrap & rhs);
-		ClapTrap & operator=(const ClapTrap rhs);
+		ClapTrap & operator=(const ClapTrap & rhs);
 		
 
 		void		attack(std::string const & target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int	amount);
 };
-
-#endif

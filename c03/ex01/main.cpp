@@ -23,5 +23,7 @@ int main(void)
 
 	sachaKetchum->guardGate();
 
+	delete sachaKetchum;
+
 	return (0);
 }

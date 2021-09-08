@@ -12,7 +12,14 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) {}
+ClapTrap::ClapTrap(void)
+{
+	std::cout << "ClapTrap constructor" << std::endl;
+	_name = "default";
+	_attack_damage = 0;
+	_energy_points = 10;
+	_hitpoints = 10;	
+}
 
 ClapTrap::ClapTrap(std::string name)
 {

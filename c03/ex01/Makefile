@@ -1,14 +1,28 @@
-FILE=$(wildcard *.cpp)
+# AUTO-GENERATE FILE
+# BY 42tool
+# creator: https://github.com/atinseau
+# project author: atinseau
+#######################
 CC=clang++
-FLAGS=-Wall -Werror -Wextra
-NAME=scavtrap
-
-all:
-	$(CC) $(FLAGS) $(FILE) -o $(NAME)
-
+NAME=ScavTrap
+FLAGS= -Wall -Wextra -Wall -std=c++98
+SRCS=	ClapTrap.cpp \
+		ScavTrap.cpp \
+		main.cpp
+#######################
+OBJS=$(SRCS:.cpp=.o)
+#######################
+$(NAME):$(OBJS)
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+#######################
+all: $(NAME)
+#######################
 clean:
-	rm -f $(NAME)
-
+	@rm -f $(OBJS)
+#######################
 fclean: clean
-
+	@rm -f $(NAME)
+#######################
 re: fclean all
+#######################
+.PHONY: all clean fclean re

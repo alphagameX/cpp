@@ -15,6 +15,9 @@
 ScavTrap::ScavTrap(void)
 {
 	std::cout << "ScavTrap constructor" << std::endl;
+	_hitpoints = 100;
+	_energy_points = 50;
+	_attack_damage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)

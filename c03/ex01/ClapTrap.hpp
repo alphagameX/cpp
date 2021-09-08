@@ -20,7 +20,7 @@ class ClapTrap
 		int			_energy_points;
 		int			_attack_damage;
 	public:
-
+		ClapTrap(void);
 		ClapTrap(std::string name);
 		virtual ~ClapTrap(void);
 		ClapTrap(const ClapTrap & rhs);

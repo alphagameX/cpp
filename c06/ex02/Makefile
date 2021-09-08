@@ -4,12 +4,9 @@
 # project author: atinseau
 #######################
 CC=clang++
-NAME=DiamondTrap
-FLAGS= -Wall -Wextra -Wall -std=c++98 -Wshadow -Wno-shadow
-SRCS=	ClapTrap.cpp \
-		DiamondTrap.cpp \
-		FragTrap.cpp \
-		ScavTrap.cpp \
+NAME=Identity
+FLAGS= -Wall -Wextra -Wall -std=c++98
+SRCS=	Base.cpp \
 		main.cpp
 #######################
 OBJS=$(SRCS:.cpp=.o)

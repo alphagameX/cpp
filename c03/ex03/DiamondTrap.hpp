@@ -19,6 +19,7 @@
 class DiamondTrap : public FragTrap, public ScavTrap
 {
 	public:
+		DiamondTrap(void);
 		DiamondTrap(std::string name);
 		void		whoAmi(void);
 		using 		ScavTrap::attack;

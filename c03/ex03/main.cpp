@@ -5,9 +5,9 @@ int main(void)
 {
 
 
-	DiamondTrap trap("salut");
+	DiamondTrap trap("Giorno giovanna");
 	
-	trap.attack("pute");
+	trap.attack("Diavolo");
 	trap.whoAmi();
 	trap.highFivesGuys();
 

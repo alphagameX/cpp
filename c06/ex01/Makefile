@@ -6,7 +6,8 @@
 CC=clang++
 NAME=serialize
 FLAGS= -Wall -Wextra -Wall
-SRCS=	main.cpp
+SRCS=	Serialize.cpp \
+		main.cpp
 #######################
 OBJS=$(SRCS:.cpp=.o)
 #######################

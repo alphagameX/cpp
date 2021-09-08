@@ -6,21 +6,26 @@
 /*   By: arthurtinseau <arthurtinseau@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 08:58:31 by arthur            #+#    #+#             */
-/*   Updated: 2021/08/24 12:15:38 by arthurtinse      ###   ########.fr       */
+/*   Updated: 2021/08/24 12:26:21 by arthurtinse      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(void) : _name("default"), _attack_damage(0), _energy_points(10), _hitpoints(10)
 {
-	_name = name;
-	_attack_damage = 0;
-	_energy_points = 10;
-	_hitpoints = 10;	
+	std::cout << "ClapTrap constructor" << std::endl;
 }
 
-ClapTrap::~ClapTrap(void) {}
+ClapTrap::ClapTrap(std::string name) : _name(name), _attack_damage(0), _energy_points(10), _hitpoints(10)
+{
+	std::cout << "ClapTrap constructor" << std::endl;
+}
+
+ClapTrap::~ClapTrap(void)
+{
+	std::cout << "ClapTrap destructor" << std::endl;
+}
 
 ClapTrap::ClapTrap(const ClapTrap & rhs)
 {
@@ -56,4 +61,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	std::cout << "ClapTrap " << _name << " regenerate " << amount << " energy points !" << std::endl;
 	_energy_points += amount;
 }
+
+
 
