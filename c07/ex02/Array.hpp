@@ -1,6 +1,16 @@
-
-
+#include <math.h>
 #include <iostream>
+#include <sstream>
+
+namespace patch
+{
+	template < typename T > std::string to_string( const T& n )
+	{
+		std::ostringstream stm ;
+		stm << n ;
+		return stm.str() ;
+	}
+}
 
 template <typename T>
 class Array
@@ -31,12 +41,14 @@ class Array
 template<typename T>
 Array<T>::Array(void) : _size(0)
 {
+	std::cout << "contructor" << std::endl;
 	_container = new T();
 }
 
 template<typename T>
 Array<T>::Array(unsigned int n) : _size(n)
 {
+	std::cout << "contructor" << std::endl;
 	try
 	{
 		_container = new T [n]();
@@ -52,12 +64,16 @@ Array<T>::Array(unsigned int n) : _size(n)
 template<typename T>
 Array<T>::Array(const Array & rhs) 
 {
-	*this = rhs;
+	std::cout << "contructor" << std::endl;
+	_container = new T[rhs._size] ();
+	_size = rhs._size;
+	std::copy(rhs._container, rhs._container + rhs._size, _container);
 }
 
 template<typename T>
 Array<T>::~Array(void) 
 {
+	std::cout << "Destructor" << std::endl;
 	delete [] _container;
 }
 
@@ -70,7 +86,7 @@ unsigned int Array<T>::size(void) const
 template<typename T>
 T & Array<T>::operator[](unsigned int n) 
 {
-	if (n < 0 || n > _size)
+	if (n < 0 || n >= _size)
 		throw Array::WrongIndexException();
 	return (_container[n]);
 }
@@ -79,21 +95,18 @@ T & Array<T>::operator[](unsigned int n)
 template<typename T>
 Array<T> & Array<T>::operator=(const Array<T> & rhs) 
 {
-	  // Guard self assignment
-    if (this == &rhs)
-        return *this;
- 
-    // assume *this manages a reusable resource, such as a heap-allocated buffer mArray
-    if (_size != rhs._size) {         // resource in *this cannot be reused
-        delete[] _container;              // release resource in *this
-        _container = nullptr;
-        _size = 0;                     // preserve invariants in case next line throws
-        _container = new int[rhs._size]; // allocate resource in *this
-        _size = rhs._size;
-    } 
- 
-    std::copy(rhs._container, rhs._container + rhs._size, _container);
-    return *this;
+	if (this == &rhs)
+		return *this;
+	if (_size != rhs._size)
+	{
+		delete[] _container;
+		_container = NULL;
+		_size = 0;
+		_container = new T[rhs._size] ();
+		_size = rhs._size;
+	}
+	std::copy(rhs._container, rhs._container + rhs._size, _container);
+	return *this;
 }
 
 

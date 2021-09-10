@@ -1,14 +1,32 @@
-FILE=$(wildcard *.cpp)
+# AUTO-GENERATE FILE
+# BY 42tool
+# creator: https://github.com/atinseau
+# project author: arthur
+#######################
 CC=clang++
-FLAGS=-Wall -Werror -Wextra
 NAME=Animal
-
-all:
-	$(CC) $(FLAGS) $(FILE) -o $(NAME)
-
+FLAGS= -Wall -Wextra -Wall -std=c++98
+SRCS=	Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		main.cpp
+#######################
+OBJS=${SRCS:.cpp=.o}
+#######################
+.cpp.o:
+	$(CC) $(FLAGS) -c $< -o ${<:.cpp=.o}
+#######################
+$(NAME): $(OBJS)
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+#######################
+all: $(NAME)
+#######################
 clean:
-	rm -f $(NAME)
-
+	@rm -f $(OBJS)
+#######################
 fclean: clean
-
+	@rm -f $(NAME)
+#######################
 re: fclean all
+#######################
+.PHONY: all clean fclean re

@@ -1,32 +1,34 @@
-FILE=	AMateria.cpp \
-		materia/Ice.cpp \
-		materia/Cure.cpp \
-		materia/MateriaSource.cpp  \
-		character/Character.cpp \
-		main.cpp
-
+# AUTO-GENERATE FILE
+# BY 42tool
+# creator: https://github.com/atinseau
+# project author: arthur
+#######################
 CC=clang++
-FLAGS=-Wall -Werror -Wextra
-NAME=a.out
-
-all:
-	$(CC) $(FLAGS) $(FILE) -o $(NAME)
-
-debug:
-	$(CC) $(FLAGS) $(FILE) -D DEBUG=1 -o $(NAME)
-
+NAME=Materia
+FLAGS= -Wall -Wextra -Wall -std=c++98
+SRCS=	AMateria.cpp \
+		character/Character.cpp \
+		main.cpp \
+		materia/Cure.cpp \
+		materia/Ice.cpp \
+		materia/MateriaSource.cpp
+#######################
+OBJS=${SRCS:.cpp=.o}
+#######################
+.cpp.o:
+	$(CC) $(FLAGS) -c $< -o ${<:.cpp=.o}
+#######################
+$(NAME): $(OBJS)
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+#######################
+all: $(NAME)
+#######################
 clean:
-	rm -f $(NAME)
-
-valgrind: fclean
-	docker build -t valgrind $(shell pwd)/valgrind
-	docker run -it -v $(shell pwd)/:/project valgrind
-
-# ONLY IN VALGRIND CONTAINER
-run: all
-	@valgrind --leak-check=full ./$(NAME)
-
-
+	@rm -f $(OBJS)
+#######################
 fclean: clean
-
+	@rm -f $(NAME)
+#######################
 re: fclean all
+#######################
+.PHONY: all clean fclean re
