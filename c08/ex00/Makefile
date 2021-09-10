@@ -3,7 +3,7 @@
 # creator: https://github.com/atinseau
 # project author: atinseau
 #######################
-CC=clang++
+CC=c++
 NAME=Algo
 FLAGS= -Wall -Wextra -Wall -std=c++98
 SRCS=	main.cpp

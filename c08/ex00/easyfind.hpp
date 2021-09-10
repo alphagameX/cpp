@@ -1,8 +1,69 @@
-
 #include <algorithm>
 #include <list>
 #include <vector>
 #include <iostream>
+#include <sys/time.h>
+#include <unistd.h>
+#include <sstream>
+#include <map>
+#include <deque>
+
+/********************************************************************************/
+
+unsigned int hash3(void)
+{
+	struct timeval t;
+	gettimeofday(&t, NULL);
+	return (((t.tv_sec * 2654435789U) + (t.tv_usec * 2654435789U)) + getpid());
+}
+
+namespace patch
+{
+	template <typename T>
+	std::string to_string( const T& n )
+	{
+		std::ostringstream stm ;
+		stm << n ;
+		return stm.str() ;
+	}
+}
+
+/********************************************************************************/
+
+template <typename T> 
+std::ostream & operator<<(std::ostream & o, const std::list<T> & lst)
+{
+	typename std::list<T>::const_iterator it = lst.begin();
+	while (it != lst.end())
+		o << *it++ << std::endl;
+	o << *it;
+	return (o);
+}
+
+template <typename T>
+std::ostream & operator<<(std::ostream & o, const std::vector<T> & lst)
+{
+	typename std::vector<T>::const_iterator it = lst.begin();
+	while (it != lst.end())
+		o << *it++ << std::endl;
+	o << *it;
+	return (o);
+}
+
+template <typename T, typename U>
+std::ostream & operator<<(std::ostream & o, const std::pair<T, U> & it)
+{
+	o << it.first;
+	return (o);
+}
+
+template <typename T, typename U>
+bool operator==(std::pair<T, U> pair, const U & rhs)
+{
+	return (pair.second == rhs);
+}
+
+/********************************************************************************/
 
 class EasyFindNotFoundException : public std::exception
 {
@@ -13,15 +74,15 @@ class EasyFindNotFoundException : public std::exception
 		EasyFindNotFoundException(void): _value(-1) {}
 		virtual const char *what(void) const throw()
 		{
-			std::string msg = new std::string("Value " + std::to_string(_value) + " is not found");
-			return (msg);
+			std::string *msg = new std::string("Easyfind not found: " + patch::to_string(_value));
+			return (msg->c_str());
 		}
 };
 
+
+/********************************************************************************/
+
 template <typename T>
-/**
- * ! only with a container
- */
 void easyfind(const T & container, int search)
 {
 	int pos = 0;

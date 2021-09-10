@@ -66,6 +66,7 @@
 		"utility": "cpp",
 		"vector": "cpp",
 		"__cxx_version": "cpp",
-		"filesystem": "cpp"
+		"filesystem": "cpp",
+		"map": "cpp"
 	}
 }
