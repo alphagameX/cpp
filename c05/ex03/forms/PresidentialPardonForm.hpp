@@ -10,12 +10,12 @@ class PresidentialPardonForm: public Form
 	public:
 		PresidentialPardonForm(void);
 		PresidentialPardonForm(std::string name);
-		~PresidentialPardonForm(void);
+		virtual ~PresidentialPardonForm(void);
 		PresidentialPardonForm(PresidentialPardonForm const &src);
 
 		PresidentialPardonForm&		operator=(PresidentialPardonForm const &src);
 
-		virtual void execute(const Bureaucrat & rhs);
+		virtual void execute(const Bureaucrat & executor);
 };
 
 

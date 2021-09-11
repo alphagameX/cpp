@@ -10,6 +10,9 @@ RobotomyRequestForm::RobotomyRequestForm(std::string name): Form(name, 72, 45)
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src): Form(src)
 {}
 
+RobotomyRequestForm::~RobotomyRequestForm(void) 
+{}
+
 RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const &src) 
 {
 	if (this == &src)

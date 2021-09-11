@@ -3,7 +3,7 @@
 # creator: https://github.com/atinseau
 # project author: atinseau
 #######################
-CC=g++
+CC=clang++
 NAME=Bureau
 FLAGS= -Wall -Wextra -Wall -std=c++98
 SRCS=	Bureaucrat.cpp \

@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <fstream>
+# include <cstdlib>
 # include "Form.hpp"
 
 class RobotomyRequestForm: public Form
@@ -10,12 +11,12 @@ class RobotomyRequestForm: public Form
 	public:
 		RobotomyRequestForm(void);
 		RobotomyRequestForm(std::string name);
-		~RobotomyRequestForm(void);
+		virtual ~RobotomyRequestForm(void);
 		RobotomyRequestForm(RobotomyRequestForm const &src);
 
 		RobotomyRequestForm&		operator=(RobotomyRequestForm const &src);
 
-		virtual void execute(const Bureaucrat & rhs);
+		virtual void execute(const Bureaucrat & executor);
 };
 
 

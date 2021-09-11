@@ -5,11 +5,15 @@ Intern::Intern(void) {}
 
 Intern::~Intern(void) {}
 
-Intern::Intern(Intern const &src) {}
+Intern::Intern(Intern const &src)
+{
+	(void)src;	
+}
 
 typedef Form* FormMaker(std::string name);
 
-template <class X> Form* make(std::string name)
+template <class X>
+Form* make(std::string name)
 {
 	return new X(name);
 }
@@ -33,7 +37,7 @@ Form* Intern::makeForm(std::string request, std::string target)
 		if (db[i] == request)
 		{
 			Form *tmp = makers[i](target);
-			std::cout << "Intern creates " << tmp->getName() << std::endl;
+			std::cout << "Intern creates " << tmp->getName() << " contract" << std::endl;
 			return (tmp);
 		}
 	}
@@ -43,11 +47,13 @@ Form* Intern::makeForm(std::string request, std::string target)
 
 Intern& Intern::operator=(Intern const &src)
 {
+	(void)src;
 	return (*this);
 }
 
 std::ostream & operator<<(std::ostream &o, Intern const &src)
 {
+	(void)src;
 	o << "Im currently nothing...";
 	return (o);
 }
