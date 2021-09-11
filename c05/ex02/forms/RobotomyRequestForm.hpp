@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <fstream>
+# include <cstdlib>
 # include "Form.hpp"
 
 class RobotomyRequestForm: public Form
@@ -15,7 +16,7 @@ class RobotomyRequestForm: public Form
 
 		RobotomyRequestForm&		operator=(RobotomyRequestForm const &src);
 
-		virtual void execute(const Bureaucrat & rhs);
+		virtual void execute(const Bureaucrat & executor);
 };
 
 

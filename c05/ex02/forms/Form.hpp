@@ -15,7 +15,7 @@ class Form
 		const int			_exec_required_grade;
 	public:
 		Form(void);
-		~Form(void);
+		virtual ~Form(void);
 		Form(std::string name, int sign_required_grade, int exec_required_grade);
 		Form(Form const &src);
 

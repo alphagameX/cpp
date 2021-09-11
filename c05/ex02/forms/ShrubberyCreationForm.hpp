@@ -1,6 +1,3 @@
-
-
-
 #ifndef SHRUBBERYCREATIONFORM_H
 # define SHRUBBERYCREATIONFORM_H
 
@@ -18,7 +15,7 @@ class ShrubberyCreationForm: public Form
 
 		ShrubberyCreationForm&		operator=(ShrubberyCreationForm const &src);
 
-		virtual void execute(const Bureaucrat & rhs);
+		virtual void execute(const Bureaucrat & executor);
 };
 
 

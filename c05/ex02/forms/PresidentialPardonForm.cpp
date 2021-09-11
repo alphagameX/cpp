@@ -7,19 +7,19 @@ PresidentialPardonForm::PresidentialPardonForm(void): Form("default", 25, 5)
 PresidentialPardonForm::PresidentialPardonForm(std::string name): Form(name, 25, 5)
 {}
 
-void PresidentialPardonForm::execute(const Bureaucrat & rhs) 
+void PresidentialPardonForm::execute(const Bureaucrat & executor) 
 {
 
 	try
 	{
-		authorized(getExecGrade(), rhs);
+		authorized(getExecGrade(), executor);
 		
-		std::cout << rhs.getName() << " was forgiven by " << getName() << std::endl;
+		std::cout << executor.getName() << " was forgiven by " << getName() << std::endl;
 
-		rhs.executeForm(*this);
+		executor.executeForm(*this);
 	}
 	catch (std::exception & e)
 	{
-		std::cerr  << ERR << rhs.getName() << " cannot execute because the grade is too high" << DEF << std::endl;
+		std::cerr  << ERR << executor.getName() << " cannot execute because the grade is too high" << DEF << std::endl;
 	}
 }

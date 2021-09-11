@@ -1,22 +1,30 @@
-FILE=	$(wildcard *.cpp)
-CC=clang++
-FLAGS=-Wall -Werror -Wextra -std=c++98 -g
-NAME=Bureaucrat
-
-all:
-	$(CC) $(FLAGS) $(FILE) -o $(NAME)
-
+# AUTO-GENERATE FILE
+# BY 42tool
+# creator: https://github.com/atinseau
+# project author: atinseau
+#######################
+CC=g++
+NAME=Bureau
+FLAGS= -Wall -Wextra -Wall -std=c++98
+SRCS=	Bureaucrat.cpp \
+		main.cpp
+#######################
+OBJS=${SRCS:.cpp=.o}
+#######################
+.cpp.o:
+	$(CC) $(FLAGS) -c $< -o ${<:.cpp=.o}
+#######################
+$(NAME): $(OBJS)
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+#######################
+all: $(NAME)
+#######################
 clean:
-	rm -f $(NAME)
-
-valgrind: fclean
-	docker build -t valgrind $(shell pwd)/valgrind
-	docker run -it -v $(shell pwd)/:/project valgrind
-
-# ONLY IN VALGRIND CONTAINER
-run: re 
-	@valgrind --leak-check=full ./$(NAME)
-
+	@rm -f $(OBJS)
+#######################
 fclean: clean
-
+	@rm -f $(NAME)
+#######################
 re: fclean all
+#######################
+.PHONY: all clean fclean re

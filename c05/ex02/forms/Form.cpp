@@ -4,16 +4,18 @@
 Form::Form(void):
 	_name("Default contract"),
 	_sign_required_grade(MAX),
-	_exec_required_grade(MAX),
-	_signed(false)
-{}
+	_exec_required_grade(MAX)
+{
+	_signed = false;
+}
 
 Form::Form(std::string name, int sign_required_grade, int exec_required_grade):
 	_name(name),
 	_sign_required_grade(sign_required_grade),
-	_exec_required_grade(exec_required_grade),
-	_signed(false)
-{}
+	_exec_required_grade(exec_required_grade)
+{
+	_signed = false;
+}
 
 Form::~Form(void) 
 {}
@@ -23,7 +25,7 @@ Form::Form(Form const &src):
 	_sign_required_grade(src._sign_required_grade),
 	_exec_required_grade(src._exec_required_grade)
 {
-	*this = src;
+	_signed = src._signed;
 }
 
 Form& Form::operator=(Form const &src) 

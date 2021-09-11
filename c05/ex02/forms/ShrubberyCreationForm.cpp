@@ -7,14 +7,14 @@ ShrubberyCreationForm::ShrubberyCreationForm(void): Form("default", 145, 137)
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name): Form(name, 145, 137)
 {}
 
-void ShrubberyCreationForm::execute(const Bureaucrat & rhs) 
+void ShrubberyCreationForm::execute(const Bureaucrat & executor) 
 {
 
 	try
 	{
-		authorized(getExecGrade(), rhs);
-		
-		std::ofstream ofs(getName() + "_shrubbery");
+		authorized(getExecGrade(), executor);
+		std::string name = getName() + "_shrubbery";
+		std::ofstream ofs(name.c_str());
 
 		ofs << "      /\\      " << std::endl;
 		ofs << "     /\\*\\     " << std::endl;
@@ -27,11 +27,11 @@ void ShrubberyCreationForm::execute(const Bureaucrat & rhs)
 		ofs << "      ||      " << std::endl;
 
 
-		rhs.executeForm(*this);
+		executor.executeForm(*this);
 
 	}
 	catch (std::exception & e)
 	{
-		std::cerr << ERR << rhs.getName() << " cannot execute because the grade is too high" << DEF << std::endl;
+		std::cerr << ERR << executor.getName() << " cannot execute because the grade is too high" << DEF << std::endl;
 	}
 }
