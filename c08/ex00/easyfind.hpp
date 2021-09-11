@@ -53,7 +53,7 @@ std::ostream & operator<<(std::ostream & o, const std::vector<T> & lst)
 template <typename T, typename U>
 std::ostream & operator<<(std::ostream & o, const std::pair<T, U> & it)
 {
-	o << it.first;
+	o << it.second;
 	return (o);
 }
 
