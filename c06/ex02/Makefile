@@ -4,14 +4,17 @@
 # project author: atinseau
 #######################
 CC=clang++
-NAME=Identity
+NAME=Convert
 FLAGS= -Wall -Wextra -Wall -std=c++98
 SRCS=	Base.cpp \
 		main.cpp
 #######################
-OBJS=$(SRCS:.cpp=.o)
+OBJS=${SRCS:.cpp=.o}
 #######################
-$(NAME):$(OBJS)
+.cpp.o:
+	$(CC) $(FLAGS) -c $< -o ${<:.cpp=.o}
+#######################
+$(NAME): $(OBJS)
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 #######################
 all: $(NAME)

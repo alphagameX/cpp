@@ -1,17 +1,20 @@
 # AUTO-GENERATE FILE
 # BY 42tool
-# creator: https://github.com/alphagameX
-# project author: arthur
+# creator: https://github.com/atinseau
+# project author: atinseau
 #######################
 CC=clang++
-NAME=serialize
-FLAGS= -Wall -Wextra -Wall
+NAME=Convert
+FLAGS= -Wall -Wextra -Wall -std=c++98
 SRCS=	Serialize.cpp \
 		main.cpp
 #######################
-OBJS=$(SRCS:.cpp=.o)
+OBJS=${SRCS:.cpp=.o}
 #######################
-$(NAME):$(OBJS)
+.cpp.o:
+	$(CC) $(FLAGS) -c $< -o ${<:.cpp=.o}
+#######################
+$(NAME): $(OBJS)
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 #######################
 all: $(NAME)
