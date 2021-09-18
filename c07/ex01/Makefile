@@ -4,7 +4,7 @@
 # project author: arthur
 #######################
 CC=clang++
-NAME=Iter
+NAME=Iteration
 FLAGS= -Wall -Wextra -Wall -std=c++98
 SRCS=	main.cpp
 #######################

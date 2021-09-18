@@ -4,8 +4,8 @@
 # project author: arthur
 #######################
 CC=clang++
-NAME=Array
-FLAGS= -Wall -Wextra -Wall -g -std=c++98
+NAME=Array.out
+FLAGS= -Wall -Wextra -Wall -std=c++98
 SRCS=	main.cpp
 #######################
 OBJS=${SRCS:.cpp=.o}
