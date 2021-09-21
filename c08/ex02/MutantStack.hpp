@@ -18,6 +18,19 @@ class MutantStack: public std::stack<T>
 		typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
 		MutantStack(void): std::stack<T>() {}
+		MutantStack(const MutantStack & rhs): std::stack<T>()
+		{
+			this->c = rhs.c;
+		}
+
+		MutantStack & operator=(const MutantStack & rhs)
+		{
+			if (this == &rhs)
+				return (*this);
+			this->c = rhs.c;
+			return (*this);
+		}
+
 		~MutantStack(void)
 		{
 			std::cout << "Destructor" << std::endl;
@@ -72,6 +85,18 @@ class MutantStack: public std::stack<T>
 		}
 		
 };
+
+template <typename T>
+std::ostream & operator<<(std::ostream & o, const MutantStack<T> & rhs)
+{
+	typename MutantStack<T>::const_iterator it =  rhs.begin();
+
+	while (it != rhs.end())
+	{
+		o << *it++ << std::endl;
+	}
+	return (o);
+}
 
 
 #endif // __MUTANTSTACK_H__

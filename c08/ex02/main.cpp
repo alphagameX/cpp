@@ -5,7 +5,14 @@
 int main (void)
 {
 
+
 	MutantStack<int> stack;
+
+	std::cout << "---Empty stack---" << std::endl;
+
+	std::cout << stack << std::endl;
+
+	std::cout << "---Filled stack---" << std::endl;
 
 	stack.push(9);
 	stack.push(11);
@@ -13,16 +20,24 @@ int main (void)
 	stack.push(13);
 	stack.push(14);
 	stack.push(16);
+	stack.push(17);
 
-	MutantStack<int>::iterator it = stack.begin();
+	std::cout << stack << std::endl;
 
-	while (it != stack.end())
+	std::cout << "---COPY---" << std::endl;
+
+	MutantStack<int> copy = stack;
+
+	std::cout << stack << std::endl;
+
+	std::cout << "---REVERSE ITERATOR---" << std::endl;
+
+	MutantStack<int>::reverse_iterator it = copy.rbegin();
+
+	while (it != copy.rend())
 	{
-		*it += 1;
 		std::cout << *it++ << std::endl;
-	}	
-
-	std::cout << stack[1] << std::endl;
+	}
 
 	return (0);
 }

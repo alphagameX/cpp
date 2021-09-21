@@ -72,6 +72,13 @@
 		"__tree": "cpp",
 		"memory_resource": "cpp",
 		"version": "cpp",
-		"clocale": "cpp"
+		"clocale": "cpp",
+		"*.tcc": "cpp",
+		"codecvt": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp",
+		"numeric": "cpp",
+		"random": "cpp",
+		"ranges": "cpp"
 	}
 }

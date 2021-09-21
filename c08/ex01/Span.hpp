@@ -7,12 +7,15 @@
 
 class Span
 {
+
+	typedef std::vector<unsigned int> container;
+
 	private:
 		bool			_initialize;
 		unsigned int	_max_size;
 		unsigned int	_min;
 		unsigned int	_max;
-		std::vector <unsigned int> _vec;
+		container _vec;
 	
 	public:
 		Span(void);
@@ -27,7 +30,7 @@ class Span
 		unsigned int shortestSpan(void) const;
 		unsigned int longestSpan(void) const;
 
-		const std::vector <unsigned int> &	getVector(void) const;
+		const container &	getVector(void) const;
 		unsigned int					max(void) const;
 		unsigned int					min(void) const;
 

@@ -1,14 +1,20 @@
 
 #include "Span.hpp"
 
+namespace func {
+	unsigned int abs (int v) {
+		return (v < 0 ? v * -1: v);
+	}
+}
+
 Span::Span(void): _initialize(false), _max_size(10000), _min(0), _max(0)
 {
-	_vec = std::vector<unsigned int> ();
+	_vec = container();
 }
 
 Span::Span(unsigned int N): _initialize(false), _max_size(N), _min(0), _max(0)
 {
-	_vec = std::vector<unsigned int> ();
+	_vec = container();
 }
 
 Span::Span(const Span & rhs)
@@ -31,7 +37,7 @@ Span & Span::operator=(const Span & rhs)
 
 void	Span::addNumber(unsigned int nb)
 {
-	for (std::vector<unsigned int>::const_iterator it = _vec.begin(); it != _vec.end(); it++)
+	for (container::const_iterator it = _vec.begin(); it != _vec.end(); it++)
 	{
 		if (nb == *it)
 			throw Span::DoubleNumberException();
@@ -55,14 +61,16 @@ void	Span::addNumber(unsigned int nb)
 unsigned int Span::shortestSpan(void) const
 {
 	
-	unsigned int max = _max;
+	unsigned diff = longestSpan();
 
-	for(std::vector<unsigned int>::const_iterator it = _vec.begin(); it != _vec.end(); it++)
+	for(container::const_iterator it = _vec.begin(); it != _vec.end(); it++)
 	{
-		if (*it < max && *it > _min)
-			max = *it;
+		for(container::const_iterator et = _vec.begin() + 1; et != _vec.end(); et++) {
+			if (func::abs(*it - *et) < diff && it != et)
+				diff = func::abs(*it - *et);
+		}
 	}
-	return (max - _min);
+	return (diff);
 }
 
 unsigned int Span::longestSpan(void) const
